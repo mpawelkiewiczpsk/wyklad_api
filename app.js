@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const session = require('express-session');
 const middlewares = require('./middlewares/errors')
-
+const cors = require('cors')
 const routes = require('./routes/index');
 
 const app = express();
@@ -21,6 +21,8 @@ app.use(bodyParser.text({limit: '10mb'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser());
+
+app.use(cors())
 
 app.use(session({
     secret: 'template',
